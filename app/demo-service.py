@@ -1,6 +1,5 @@
 import os
 from dotenv import load_dotenv
-from langchain_ollama import ChatOllama
 from langchain_core.prompts import PromptTemplate
 from typing import List, Dict, Optional
 from pydantic import BaseModel
@@ -11,26 +10,6 @@ from langchain_groq import ChatGroq
 
 load_dotenv(".env")
 
-# Load environment variables
-base_url = os.getenv("OLLAMA_BASE_URL")
-
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-if not GROQ_API_KEY:
-    raise ValueError("GROQ_API_KEY not found in .env file")
-# print("GROQ_API_KEY:", GROQ_API_KEY)
-
-if not base_url:
-    raise ValueError("OLLAMA_BASE_URL not found in .env file")
-
-# Define the model
-model = "llama3.2:3b"
-
-# Initialize the ChatOllama instance
-# llm = ChatOllama(
-#     base_url=base_url,
-#     model=model,
-#     temperature=0.7,
-# )
 
 
 llm = ChatGroq(
